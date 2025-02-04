@@ -308,7 +308,7 @@ button.menu-toggle {
 
 .normal-products .product img {
     width: 100%;
-    height: 300px; /* Adjusted height for images */
+    height: 290px; /* Adjusted height for images */
     object-fit: cover; /* Ensure images cover the area */
     border-radius: 8px; /* Rounded corners for images */
 }
@@ -467,6 +467,11 @@ footer ul li a {
         width: 45%; /* Adjust width to show 2 products per row */
         margin: 10px 5px; /* Reduced margin for mobile */
     }
+
+    .normal-products .product img {
+        height: 150px;
+    }
+
 
     .product img {
         width: 100%; /* Ensure images resize proportionally */
