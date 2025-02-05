@@ -1,7 +1,6 @@
 /* IMPORTS */
 @import url('https://fonts.cdnfonts.com/css/source-sans-pro');
 
-
 /* Reset básico */
 * {
     margin: 0;
@@ -71,6 +70,8 @@ header {
     width: 100%;
     top: 0;
     z-index: 1000;
+    height: 70px; /* Altura inicial do cabeçalho */
+    transition: height 0.3s ease; /* Transição suave para a altura */
 }
 
 header .logo {
@@ -78,7 +79,12 @@ header .logo {
 }
 
 header .logo img {
-    height: 70px; /* Maintain original logo size */
+    width: 1500px; /* Tornar a logo responsiva */
+    max-width: 50px; /* Aumentar largura máxima para a logo */
+    height: auto;
+    transition: max-width 0.3s ease; /* Transição suave para a largura */
+    padding-top: 10px;
+    padding-left: 50px;
 }
 
 header .search-bar {
@@ -89,13 +95,14 @@ header .search-bar {
 }
 
 header .search-bar input {
-    width: 420px;
+    width: 50%; /* Tornar a barra de pesquisa responsiva */
     padding: 5px;
     padding-right: 30px; /* Espaço para a imagem de lupa */
     color: #fff;
     background-color: #808080;
     border: 1px solid #000000;
     border-radius: 4px;
+    height: 100px;
 }
 
 header .search-bar input::placeholder {
@@ -105,7 +112,7 @@ header .search-bar input::placeholder {
 
 header .search-bar .search-icon {
     position: absolute;
-    right: 325px; /* Posicionar a imagem de lupa à direita */
+    right: 27%; /* Posicionar a imagem de lupa à direita */
     top: 50%;
     transform: translateY(-50%); /* Centralizar verticalmente */
     width: 20px; /* Ajustar largura da imagem de lupa */
@@ -126,7 +133,9 @@ header .header-icons a {
 }
 
 header .header-icons img {
-    height: 30px;
+    max-width: 50px; /* Aumentar largura máxima para os ícones */
+    height: auto;
+    transition: max-width 0.3s ease; /* Transição suave para a largura */
 }
 
 /* Menu de Navegação */
@@ -136,6 +145,7 @@ nav {
     align-items: center;
     background-color: #333;
     padding: 10px 30px;
+    padding-top: 20px;
     top: 60px; /* Abaixo do cabeçalho */
 }
 
@@ -187,19 +197,19 @@ button.menu-toggle {
 }
 
 /* Banner Principal */
-.main-banner img {
-    width: 100%; /* Make the banner responsive */
-    height: auto; /* Maintain aspect ratio */
-    max-width: 1900px; /* Maximum width for banner */
-    max-height: 420px; /* Maximum height for banner */
+.main-banner {
+    width: 100%;
+    height: auto; /* Manter a proporção da altura */
+    max-width: 1900px; /* Largura máxima para o banner */
     display: block;
-    margin: 20px auto; /* Center the banner */
+    margin: 20px auto; /* Centralizar o banner */
+    position: relative; /* Garantir que outros elementos não entrem por baixo */
 }
 
-/* Seção de Ofertas e Produtos */
-.products {
-    padding: 20px;
-    position: relative; /* For positioning arrows */
+.main-banner img {
+    width: 100%; /* Tornar o banner responsivo */
+    height: auto; /* Manter a proporção da altura */
+    display: block;
 }
 
 .main-products {
@@ -207,6 +217,13 @@ button.menu-toggle {
     overflow-x: auto; /* Enable horizontal scrolling */
     scroll-snap-type: x mandatory; /* Snap to items */
     -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+}
+
+/* Seção de Ofertas e Produtos */
+.products {
+    padding: 20px;
+    position: relative; /* For positioning arrows */
+    clear: both; /* Garantir que a seção de produtos não entre por baixo do banner */
 }
 
 .main-products .product {
@@ -327,7 +344,7 @@ button.menu-toggle {
     font-weight: bold;
 }
 
-.normal-products .product button {
+normal-products .product button {
     padding: 10px 20px;
     background-color: #000; /* Fundo preto para botões */
     color: #fff;
@@ -396,7 +413,7 @@ footer ul li a {
 }
 
 /* Estilos Responsivos */
-@media (max-width: 768px) {
+@media (max-width: 688px) {
     .sidebar {
         display: block; /* Show sidebar on mobile */
     }
@@ -409,16 +426,8 @@ footer ul li a {
         display: none; /* Hide header icons on mobile */
     }
 
-    nav {
-        display: none; /* Hide nav on mobile */
-    }
-
     .sidebar ul {
         display: block; /* Show nav links in sidebar */
-    }
-
-    header .search-bar input {
-        width: 200px;
     }
 
     header {
@@ -431,6 +440,8 @@ footer ul li a {
 
     header .logo img {
         content: url('logo.jpeg'); /* Use another image for the logo on mobile */
+        max-width: 70px; /* Ajustar largura máxima */
+        padding-left: 0px;
     }
 
     header .search-bar {
@@ -439,6 +450,15 @@ footer ul li a {
     
     header .header-icons {
         display: none;
+    }
+
+    header .search-bar input {
+        height: 30px;
+        width: 75%; /* Tornar a barra de pesquisa responsiva */
+    }
+
+    header .search-bar .search-icon {
+        right: 15%; /* Posicionar a imagem de lupa à direita */
     }
 
     .products {
@@ -472,7 +492,6 @@ footer ul li a {
         height: 150px;
     }
 
-
     .product img {
         width: 100%; /* Ensure images resize proportionally */
         height: 150px; /* Adjusted height for mobile */
@@ -501,5 +520,182 @@ footer ul li a {
         width: 100%; /* Make the banner responsive */
         height: auto; /* Maintain aspect ratio */
     }
-
+    nav {
+        padding-top: 8px;
+        display: none; /* Hide nav on mobile */
+    }
+    
+    
 }
+
+@media (min-width: 688px) and (max-width: 769px) {
+    .normal-products .product {
+        width: calc(33.33% - 20px); /* Ajustar largura para ocupar mais espaço horizontalmente */
+    }
+    header .header-icons img {
+        width: 50%;
+        height: auto;
+    }
+    
+    header {
+        height: 80px; /* Aumentar altura do cabeçalho */
+    }
+
+    header .header-icons img {
+        width: 50%;
+        height: auto;
+    }
+
+    header .logo img {
+        max-width: 115px; /* Ajustar largura máxima */
+    }
+
+    header .header-icons img {
+        max-width: 50px; /* Ajustar largura máxima */
+    }
+    header .search-bar input {
+        height: 30px;
+    }
+    nav {
+        padding-top: 8px;
+    }
+}
+
+@media (min-width: 770px) and (max-width: 1000px) {
+    .normal-products .product {
+        width: calc(33.33% - 20px); /* Ajustar largura para ocupar mais espaço horizontalmente */
+    }
+    header .header-icons img {
+        width: 55%;
+        height: auto;
+    }
+    
+    header {
+        height: 85px; /* Aumentar altura do cabeçalho */
+    }
+
+    header .header-icons img {
+        width: 55%;
+        height: auto;
+    }
+
+    header .logo img {
+        max-width: 120px; /* Ajustar largura máxima */
+    }
+
+    header .header-icons img {
+        max-width: 55px; /* Ajustar largura máxima */
+    }
+
+    header .search-bar input {
+        height: 35px;
+    }
+    nav {
+        padding-top: 15px;
+    }
+}
+
+@media (min-width: 1001px) {
+    .normal-products .product {
+        width: calc(25% - 20px); /* Ajustar largura para ocupar mais espaço horizontalmente */
+    }
+    header .header-icons img {
+        width: 60%;
+        height: auto;
+    }
+    
+    header {
+        height: 90px; /* Aumentar altura do cabeçalho */
+    }
+
+    header .header-icons img {
+        width: 60%;
+        height: auto;
+    }
+
+    header .logo img {
+        max-width: 125px; /* Ajustar largura máxima */
+    }
+
+    header .header-icons img {
+        max-width: 60px; /* Ajustar largura máxima */
+    }
+
+    header .search-bar input {
+        height: 40px;
+    }
+    nav {
+        padding-top: 25px;
+    }
+}
+
+@media (min-width: 1481px) {
+    .normal-products .product {
+        width: calc(20% - 20px); /* Ajustar largura para ocupar mais espaço horizontalmente */
+    }
+    header .header-icons img {
+        width: 65%;
+        height: auto;
+    }
+    
+    header {
+        height: 100px; /* Aumentar altura do cabeçalho */
+    }
+
+    header .header-icons img {
+        width: 65%;
+        height: auto;
+    }
+
+    header .logo img {
+        max-width: 135px; /* Ajustar largura máxima */
+    }
+
+    header .header-icons img {
+        max-width: 65px; /* Ajustar largura máxima */
+    }
+
+    header .search-bar input {
+        height: 45px;
+    }
+    nav {
+        padding-top: 30px;
+    }
+}
+
+@media (min-width: 1701px) {
+    .normal-products .product {
+        width: calc(17% - 20px); /* Ajustar largura para ocupar mais espaço horizontalmente */
+    }
+    header .header-icons img {
+        width: 70%;
+        height: auto;
+    }
+    
+    header {
+        height: 105px; /* Aumentar altura do cabeçalho */
+    }
+
+    header .header-icons img {
+        width: 70%;
+        height: auto;
+    }
+
+    header .logo img {
+        max-width: 150px; /* Ajustar largura máxima */
+    }
+
+    header .header-icons img {
+        max-width: 70px; /* Ajustar largura máxima */
+    }
+
+    header .search-bar input {
+        height: 50px;
+    }
+
+    nav {
+        padding-top: 35px;
+    }
+    
+}
+
