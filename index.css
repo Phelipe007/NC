@@ -93,7 +93,7 @@ header .search-bar {
     flex-grow: 1; /* Allow the search bar to grow */
     text-align: center; /* Center the search bar */
 }
-
+    
 header .search-bar input {
     width: 50%; /* Tornar a barra de pesquisa responsiva */
     padding: 5px;
@@ -144,14 +144,27 @@ nav {
     justify-content: space-between;
     align-items: center;
     background-color: #333;
-    padding: 10px 30px;
-    padding-top: 20px;
-    top: 60px; /* Abaixo do cabeçalho */
+    padding: 10px 30px; /* Padding lateral */
+    padding-top: 20px; /* Padding superior */
+    height: auto; /* Permitir que o nav cresça verticalmente */
+}
+/* Menu de Navegação */
+nav {
+    display: flex;
+    justify-content: center; /* Centralizar horizontalmente */
+    align-items: center;
+    background-color: #333;
+    padding: 10px 30px; /* Padding lateral */
+    padding-top: 20px; /* Padding superior */
+    height: auto; /* Permitir que o nav cresça verticalmente */
+    text-align: center; /* Centralizar o texto */
 }
 
 nav ul {
     display: flex;
     list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
 nav ul li {
@@ -162,19 +175,12 @@ nav ul li a {
     color: #fff;
     text-decoration: none;
     font-weight: bold;
+    transition: color 0.3s ease, transform 0.3s ease; /* Transição suave para cor e transformação */
 }
 
-nav .cep input {
-    width: 150px;
-    background-color: #808080;
-    border: 1px solid #000000;
-    padding: 5px;
-    border-radius: 4px;
-}
-
-nav .cep input::placeholder {
-    color: #ffffff; /* Cor do placeholder */
-    opacity: 1; /* Para garantir que a cor personalizada seja aplicada em todos os navegadores */
+nav ul li a:hover {
+    color: #808080; /* Nova cor ao passar o mouse */
+    transform: scale(1.1); /* Aumentar um pouco o tamanho */
 }
 
 /* Ícone do menu */
@@ -204,6 +210,8 @@ button.menu-toggle {
     display: block;
     margin: 20px auto; /* Centralizar o banner */
     position: relative; /* Garantir que outros elementos não entrem por baixo */
+    border: 3px solid #000000; /* Adicionar borda preta */
+    border-radius: 0; /* Bordas retas */
 }
 
 .main-banner img {
@@ -218,12 +226,20 @@ button.menu-toggle {
     scroll-snap-type: x mandatory; /* Snap to items */
     -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
 }
-
 /* Seção de Ofertas e Produtos */
 .products {
     padding: 20px;
     position: relative; /* For positioning arrows */
     clear: both; /* Garantir que a seção de produtos não entre por baixo do banner */
+}
+
+/* Estilos para os títulos das seções de produtos */
+.products h2 {
+    font-size: 2em;
+    font-weight: bold;
+    text-align: center;
+    margin: 20px 0;
+    color: #333;
 }
 
 .main-products .product {
@@ -532,10 +548,6 @@ footer ul li a {
     .normal-products .product {
         width: calc(33.33% - 20px); /* Ajustar largura para ocupar mais espaço horizontalmente */
     }
-    header .header-icons img {
-        width: 50%;
-        height: auto;
-    }
     
     header {
         height: 80px; /* Aumentar altura do cabeçalho */
@@ -544,20 +556,22 @@ footer ul li a {
     header .header-icons img {
         width: 50%;
         height: auto;
+        max-width: 50px; /* Ajustar largura máxima */
     }
 
     header .logo img {
         max-width: 115px; /* Ajustar largura máxima */
     }
 
-    header .header-icons img {
-        max-width: 50px; /* Ajustar largura máxima */
-    }
     header .search-bar input {
         height: 30px;
     }
     nav {
         padding-top: 8px;
+    }
+
+    nav ul li a {
+        font-size: 15px;
     }
 }
 
@@ -565,11 +579,7 @@ footer ul li a {
     .normal-products .product {
         width: calc(33.33% - 20px); /* Ajustar largura para ocupar mais espaço horizontalmente */
     }
-    header .header-icons img {
-        width: 55%;
-        height: auto;
-    }
-    
+
     header {
         height: 85px; /* Aumentar altura do cabeçalho */
     }
@@ -577,14 +587,11 @@ footer ul li a {
     header .header-icons img {
         width: 55%;
         height: auto;
+        max-width: 55px; /* Ajustar largura máxima */
     }
 
     header .logo img {
         max-width: 120px; /* Ajustar largura máxima */
-    }
-
-    header .header-icons img {
-        max-width: 55px; /* Ajustar largura máxima */
     }
 
     header .search-bar input {
@@ -593,15 +600,17 @@ footer ul li a {
     nav {
         padding-top: 15px;
     }
+    nav ul li a {
+        font-size: 15px;
+    }
+    header .search-bar input::placeholder {
+        font-size: 17px;
+    }
 }
 
 @media (min-width: 1001px) {
     .normal-products .product {
         width: calc(25% - 20px); /* Ajustar largura para ocupar mais espaço horizontalmente */
-    }
-    header .header-icons img {
-        width: 60%;
-        height: auto;
     }
     
     header {
@@ -609,16 +618,13 @@ footer ul li a {
     }
 
     header .header-icons img {
-        width: 60%;
+        width: 50%;
         height: auto;
+        max-width: 50px; /* Ajustar largura máxima */
     }
 
     header .logo img {
         max-width: 125px; /* Ajustar largura máxima */
-    }
-
-    header .header-icons img {
-        max-width: 60px; /* Ajustar largura máxima */
     }
 
     header .search-bar input {
@@ -627,6 +633,14 @@ footer ul li a {
     nav {
         padding-top: 25px;
     }
+
+    nav ul li a {
+        font-size: 20px;
+    }
+
+    header .search-bar input::placeholder {
+        font-size: 17px;
+    }
 }
 
 @media (min-width: 1481px) {
@@ -634,32 +648,33 @@ footer ul li a {
         width: calc(20% - 20px); /* Ajustar largura para ocupar mais espaço horizontalmente */
     }
     header .header-icons img {
-        width: 65%;
+        width: 55%;
         height: auto;
+        max-width: 55px; /* Ajustar largura máxima */
     }
     
     header {
         height: 100px; /* Aumentar altura do cabeçalho */
     }
 
-    header .header-icons img {
-        width: 65%;
-        height: auto;
-    }
-
     header .logo img {
         max-width: 135px; /* Ajustar largura máxima */
     }
 
-    header .header-icons img {
-        max-width: 65px; /* Ajustar largura máxima */
-    }
 
     header .search-bar input {
         height: 45px;
     }
     nav {
         padding-top: 30px;
+    }
+
+    nav ul li a {
+        font-size: 22px;
+    }
+
+    header .search-bar input::placeholder {
+        font-size: 20px;
     }
 }
 
@@ -668,25 +683,17 @@ footer ul li a {
         width: calc(17% - 20px); /* Ajustar largura para ocupar mais espaço horizontalmente */
     }
     header .header-icons img {
-        width: 70%;
+        width: 60%;
         height: auto;
+        max-width: 60px; /* Ajustar largura máxima */
     }
     
     header {
         height: 105px; /* Aumentar altura do cabeçalho */
     }
 
-    header .header-icons img {
-        width: 70%;
-        height: auto;
-    }
-
     header .logo img {
         max-width: 150px; /* Ajustar largura máxima */
-    }
-
-    header .header-icons img {
-        max-width: 70px; /* Ajustar largura máxima */
     }
 
     header .search-bar input {
@@ -696,6 +703,13 @@ footer ul li a {
     nav {
         padding-top: 35px;
     }
+
+    nav ul li a {
+        font-size: 24px;
+    }
     
+    header .search-bar input::placeholder {
+        font-size: 22px;
+    }
 }
 
