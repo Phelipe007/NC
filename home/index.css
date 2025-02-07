@@ -1,0 +1,782 @@
+/* IMPORTS */
+@import url('https://fonts.cdnfonts.com/css/source-sans-pro');
+
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Sidebar */
+.sidebar {
+    position: fixed;
+    top: 60px; /* Adjusted to be below the header */
+    left: -250px; /* Hidden initially */
+    width: 250px;
+    height: calc(100% - 60px); /* Adjusted height to fit below the header */
+    background-color: #000000;
+    color: white;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+    transition: left 0.3s ease;
+    z-index: 999; /* Ensure it is above other content */
+    display: none; /* Hidden by default */
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin: 20px 0;
+}
+
+.sidebar ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.sidebar ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Sidebar visível */
+.sidebar.open {
+    left: 0;
+    background-color: #000000;
+}
+
+/* Estilos do corpo */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #dcd9ff;
+    color: #333;
+    padding-top: 80px; /* Increased padding to avoid overlap */
+}
+
+/* Cabeçalho */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 20px;
+    background-color: #000000;
+    border-bottom: 1px solid #000000;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    height: 70px; /* Altura inicial do cabeçalho */
+    transition: height 0.3s ease; /* Transição suave para a altura */
+}
+
+header .logo {
+    order: 1; /* Position logo to the left */
+}
+
+header .logo img {
+    width: 1500px; /* Tornar a logo responsiva */
+    max-width: 50px; /* Aumentar largura máxima para a logo */
+    height: auto;
+    transition: max-width 0.3s ease; /* Transição suave para a largura */
+    padding-top: 10px;
+    padding-left: 50px;
+}
+
+header .search-bar {
+    position: relative; /* Para posicionar a imagem de lupa */
+    order: 2; /* Position search bar in the middle */
+    flex-grow: 1; /* Allow the search bar to grow */
+    text-align: center; /* Center the search bar */
+}
+    
+header .search-bar input {
+    width: 50%; /* Tornar a barra de pesquisa responsiva */
+    padding: 5px;
+    padding-right: 30px; /* Espaço para a imagem de lupa */
+    color: #fff;
+    background-color: #808080;
+    border: 1px solid #000000;
+    border-radius: 4px;
+    height: 100px;
+}
+
+header .search-bar input::placeholder {
+    color: #ffffff; /* Cor do placeholder */
+    opacity: 1; /* Para garantir que a cor personalizada seja aplicada em todos os navegadores */
+}
+
+header .search-bar .search-icon {
+    position: absolute;
+    right: 27%; /* Posicionar a imagem de lupa à direita */
+    top: 50%;
+    transform: translateY(-50%); /* Centralizar verticalmente */
+    width: 20px; /* Ajustar largura da imagem de lupa */
+    height: 20px; /* Ajustar altura da imagem de lupa */
+    pointer-events: none; /* Permitir clique através da imagem */
+}
+
+header .header-icons {
+    display: flex;
+    align-items: center; /* Centralizar ícones verticalmente */
+    order: 3; /* Position icons to the right */
+    gap: 10px; /* Espaçamento entre os ícones */
+    padding-right: 25px;
+}
+
+header .header-icons a {
+    margin-left: 15px;
+}
+
+header .header-icons img {
+    max-width: 50px; /* Aumentar largura máxima para os ícones */
+    height: auto;
+    transition: max-width 0.3s ease; /* Transição suave para a largura */
+}
+
+/* Menu de Navegação */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    padding: 10px 30px; /* Padding lateral */
+    padding-top: 20px; /* Padding superior */
+    height: auto; /* Permitir que o nav cresça verticalmente */
+}
+/* Menu de Navegação */
+nav {
+    display: flex;
+    justify-content: center; /* Centralizar horizontalmente */
+    align-items: center;
+    background-color: #333;
+    padding: 10px 30px; /* Padding lateral */
+    padding-top: 20px; /* Padding superior */
+    height: auto; /* Permitir que o nav cresça verticalmente */
+    text-align: center; /* Centralizar o texto */
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    margin-right: 20px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease, transform 0.3s ease; /* Transição suave para cor e transformação */
+}
+
+nav ul li a:hover {
+    color: #808080; /* Nova cor ao passar o mouse */
+    transform: scale(1.1); /* Aumentar um pouco o tamanho */
+}
+
+/* Ícone do menu */
+.menu-toggle {
+    display: none; /* Hidden by default */
+}
+
+.menu-toggle img {
+    width: 30px; /* Ajustar largura do ícone */
+    height: 30px; /* Ajustar altura do ícone */
+    background: none; /* Remover fundo */
+    background: transparent; /* Garantir que o fundo seja transparente */
+}
+
+button.menu-toggle {
+    background-color: transparent; /* Fundo transparente para o botão */
+    border: none; /* Remover borda do botão */
+    padding: 0; /* Remover padding do botão */
+    cursor: pointer; /* Mostrar cursor de ponteiro ao passar o mouse */
+}
+
+/* Banner Principal */
+.main-banner {
+    width: 100%;
+    height: auto; /* Manter a proporção da altura */
+    max-width: 1900px; /* Largura máxima para o banner */
+    display: block;
+    margin: 20px auto; /* Centralizar o banner */
+    position: relative; /* Garantir que outros elementos não entrem por baixo */
+    border: 3px solid #000000; /* Adicionar borda preta */
+    border-radius: 0; /* Bordas retas */
+}
+
+.main-banner img {
+    width: 100%; /* Tornar o banner responsivo */
+    height: auto; /* Manter a proporção da altura */
+    display: block;
+}
+
+.main-products {
+    display: flex;
+    overflow-x: auto; /* Enable horizontal scrolling */
+    scroll-snap-type: x mandatory; /* Snap to items */
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+}
+/* Seção de Ofertas e Produtos */
+.products {
+    padding: 20px;
+    position: relative; /* For positioning arrows */
+    clear: both; /* Garantir que a seção de produtos não entre por baixo do banner */
+}
+
+.main-products .product {
+    position: relative; /* Adicionado para posicionar o botão e o texto sobre a imagem */
+    background-color: #fff;
+    border: 2px solid #808080; /* Borda cinza para produtos principais */
+    border-radius: 8px; /* Cantos arredondados para produtos */
+    padding: 0; /* Remover padding */
+    margin: 10px;
+    text-align: center;
+    scroll-snap-align: start; /* Snap para início do item */
+    flex: 0 0 auto; /* Prevenir que os itens flex encolham */
+    overflow: hidden; /* Impedir rolagem vertical */
+    width: 1080px;  /* Largura fixa */
+    height: 500px; /* Altura fixa */
+    max-width: 400px; /* Largura máxima fixa */
+    max-height: 500px; /* Altura máxima fixa */
+}
+
+.main-products .product img {
+    width: 100%;
+    height: 100%; /* Garantir que a imagem ocupe todo o espaço */
+    object-fit: cover; /* Garantir que as imagens cubram a área */
+    border-radius: 8px; /* Cantos arredondados para imagens */
+}
+
+.main-products .product .product-text {
+    position: absolute; /* Posicionar o texto sobre a imagem */
+    top: 20px; /* Descolar um pouco da borda superior */
+    left: 50%;
+    transform: translateX(-50%); /* Centralizar o texto horizontalmente */
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-weight: 700;
+    font-family: 'Source Sans Pro', sans-serif;         
+    font-size: 30px; 
+    width: 100%; /* Full width for text */               
+}
+
+.main-products .product button {
+    position: absolute; /* Posicionar o botão sobre a imagem */
+    bottom: 10px; /* Posicionar o botão um pouco acima da borda inferior */
+    left: 50%;
+    transform: translateX(-50%); /* Centralizar o botão horizontalmente */
+    padding: 10px 20px;
+    background-color: #000000; /* Fundo cinza para botões */
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 70%; /* Largura fixa */
+}
+
+.main-products .product:hover button {
+    opacity: 1; /* Mostrar botão ao passar o mouse */
+}
+
+.main-products .arrow {
+    position: absolute; /* Absolute position within main-products */
+    top: 24%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 1;
+    width: 40px; /* Fixed width */
+    height: 40px; /* Fixed height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-products .arrow.left {
+    left: 0; /* Fixed position within main-products */
+
+}
+
+.main-products .arrow.right {
+    right: 0; /* Fixed position within main-products */
+}
+
+.normal-products {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.normal-products .product {
+    background-color: #fff;
+    border: 1px solid #808080; /* Thin gray border for normal products */
+    border-radius: 8px; /* Rounded corners for products */
+    margin: 10px 5px; /* Reduced margin for mobile */
+    width: 22%;
+    text-align: center;
+    position: relative; /* Add relative positioning for the discount badge */
+}
+
+.normal-products .product img {
+    width: 100%;
+    height: 290px; /* Adjusted height for images */
+    object-fit: cover; /* Ensure images cover the area */
+    border-radius: 8px 8px 0 0; /* Rounded corners for images */
+}
+
+.normal-products .product h3 {
+    display: flex;
+    font-size: 1em;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+    padding-left: 15px;
+}
+
+.normal-products .product p {
+    display: flex;
+    font-size: 1em;
+    color: #404040;
+    margin-bottom: 10px;
+    font-weight: bold;
+    padding-left: 15px;
+}
+
+.normal-products .product #preco-antigo{
+    font-size: 0.8em;
+    color: #808080;
+    margin-bottom: 10px;
+    font-weight: bold;
+    text-decoration: line-through;
+}
+
+.normal-products .product .discount-badge {
+    position: absolute;
+    top: 350px;
+    right: 10px;
+    background-color: #000000;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 0.8em;
+    font-weight: bold;
+    width: 50px;
+}
+
+
+normal-products .product button {
+    padding: 10px 20px;
+    background-color: #000; /* Fundo preto para botões */
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Transição suave */
+}
+
+.normal-products .product button:hover {
+    background-color: #333; /* Fundo cinza escuro ao passar o mouse */
+}
+
+.product img {
+    width: 100%;
+    height: auto;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 10px;
+}
+
+.product h3 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.product p {
+    font-size: 1em;
+    color: #e74c3c;
+    margin-bottom: 10px;
+}
+
+.product button {
+    padding: 10px 20px;
+    background-color: #000000; /* Gray background for buttons */
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.product button:hover {
+    background-color: #696969; /* Darker gray on hover */
+}
+
+/* Rodapé */
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+footer ul {
+    list-style: none;
+    padding: 0;
+}
+
+footer ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+footer ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+/* Estilos Responsivos */
+@media (max-width: 688px) {
+    .sidebar {
+        display: block; /* Show sidebar on mobile */
+    }
+
+    .menu-toggle {
+        display: block; /* Show menu icon on mobile */
+    }
+
+    .header-icons {
+        display: none; /* Hide header icons on mobile */
+    }
+
+    .sidebar ul {
+        display: block; /* Show nav links in sidebar */
+    }
+
+    header {
+        padding: 0px 20px; /* Reduced padding for mobile */
+    }
+
+    header .logo {
+        order: 2; /* Position logo to the right */
+    }
+
+    header .logo img {
+        content: url('logo.jpeg'); /* Use another image for the logo on mobile */
+        max-width: 69px; /* Ajustar largura máxima */
+        padding-left: 0px;
+    }
+
+    header .search-bar {
+        order: 1; /* Position search bar to the left */
+    }
+    
+    header .header-icons {
+        display: none;
+    }
+
+    header .search-bar input {
+        height: 30px;
+        width: 75%; /* Tornar a barra de pesquisa responsiva */
+    }
+
+    header .search-bar .search-icon {
+        right: 15%; /* Posicionar a imagem de lupa à direita */
+    }
+
+    .products {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .main-products .product {
+        width: 90%; /* Adjust width for mobile */
+        height: auto; /* Adjust height for mobile */
+        max-width: 300px; /* Maximum width for mobile */
+        max-height: 300px; /* Maximum height for mobile */
+    }
+
+    .main-products .product .product-text {
+        font-weight: 700;
+        font-size: 15px; 
+    }
+
+    .product {
+        width: 90%;
+        margin: 10px 0; /* Reduced margin for mobile */
+    }
+
+    .normal-products .product {
+        width: 45%; /* Adjust width to show 2 products per row */
+        margin: 10px 5px; /* Reduced margin for mobile */
+    }
+
+    .normal-products .product img {
+        height: 150px;
+    }
+
+    .product img {
+        width: 100%; /* Ensure images resize proportionally */
+        height: 150px; /* Adjusted height for mobile */
+        object-fit: cover; /* Ensure images cover the area */
+        border-radius: 8px; /* Rounded corners for images */
+    }
+
+    .product h3 {
+        font-size: 1em; /* Adjust font size for mobile */
+    }
+
+    .product p {
+        font-size: 0.9em; /* Adjust font size for mobile */
+    }
+
+    .product button {
+        padding: 5px 10px; /* Adjust button padding for mobile */
+        font-size: 0.9em; /* Adjust button font size for mobile */
+    }
+
+    .main-products .arrow {
+        top: 16%;
+    }
+
+    .main-banner img {
+        width: 100%; /* Make the banner responsive */
+        height: auto; /* Maintain aspect ratio */
+    }
+    nav {
+        padding-top: 8px;
+        display: none; /* Hide nav on mobile */
+    }
+
+    .normal-products .product h3 {
+        display: flex;
+        font-size: 1em;
+        font-weight: bold;
+        color: #333;
+    }
+    
+    .normal-products .product p {
+        display: flex;
+        font-size: 0.9em;
+        color: #404040;
+        margin-bottom: 10px;
+        font-weight: bold;
+        padding-left: 15px;
+    }
+    
+    .normal-products .product #preco-antigo{
+        font-size: 0.7em;
+        color: #808080;
+        margin-bottom: 10px;
+        font-weight: bold;
+        text-decoration: line-through;
+    }
+    
+    .normal-products .product .discount-badge {
+        position: absolute;
+        top: 200px;
+        right: 10px;
+        background-color: #000000;
+        color: #fff;
+        padding: 5px 10px;
+        border-radius: 4px;
+        font-size: 0.65em;
+        font-weight: bold;
+        width: 44px;
+    }
+    
+}
+
+@media (min-width: 688px) and (max-width: 769px) {
+    .normal-products .product {
+        width: calc(33.33% - 20px); /* Ajustar largura para ocupar mais espaço horizontalmente */
+    }
+    
+    header {
+        height: 80px; /* Aumentar altura do cabeçalho */
+    }
+
+    header .header-icons img {
+        width: 50%;
+        height: auto;
+        max-width: 50px; /* Ajustar largura máxima */
+    }
+
+    header .logo img {
+        max-width: 115px; /* Ajustar largura máxima */
+    }
+
+    header .search-bar input {
+        height: 30px;
+    }
+    nav {
+        padding-top: 8px;
+    }
+
+    nav ul li a {
+        font-size: 15px;
+    }
+}
+
+@media (min-width: 770px) and (max-width: 1000px) {
+    .normal-products .product {
+        width: calc(33.33% - 20px); /* Ajustar largura para ocupar mais espaço horizontalmente */
+    }
+
+    header {
+        height: 85px; /* Aumentar altura do cabeçalho */
+    }
+
+    header .header-icons img {
+        width: 55%;
+        height: auto;
+        max-width: 55px; /* Ajustar largura máxima */
+    }
+
+    header .logo img {
+        max-width: 120px; /* Ajustar largura máxima */
+    }
+
+    header .search-bar input {
+        height: 35px;
+    }
+    nav {
+        padding-top: 15px;
+    }
+    nav ul li a {
+        font-size: 15px;
+    }
+    header .search-bar input::placeholder {
+        font-size: 17px;
+    }
+
+    .normal-products .product .discount-badge {
+        position: absolute;
+        top: 200px;
+        right: 10px;
+        background-color: #007006;
+        color: #fff;
+        padding: 5px 10px;
+        border-radius: 4px;
+        font-size: 0.8em;
+        font-weight: bold;
+        width: 50px;
+    }
+}
+
+@media (min-width: 1001px) {
+    .normal-products .product {
+        width: calc(25% - 20px); /* Ajustar largura para ocupar mais espaço horizontalmente */
+    }
+    
+    header {
+        height: 90px; /* Aumentar altura do cabeçalho */
+    }
+
+    header .header-icons img {
+        width: 50%;
+        height: auto;
+        max-width: 50px; /* Ajustar largura máxima */
+    }
+
+    header .logo img {
+        max-width: 125px; /* Ajustar largura máxima */
+    }
+
+    header .search-bar input {
+        height: 40px;
+    }
+    nav {
+        padding-top: 25px;
+    }
+
+    nav ul li a {
+        font-size: 20px;
+    }
+
+    header .search-bar input::placeholder {
+        font-size: 17px;
+    }
+}
+
+@media (min-width: 1481px) {
+    .normal-products .product {
+        width: calc(20% - 20px); /* Ajustar largura para ocupar mais espaço horizontalmente */
+    }
+    header .header-icons img {
+        width: 55%;
+        height: auto;
+        max-width: 55px; /* Ajustar largura máxima */
+    }
+    
+    header {
+        height: 100px; /* Aumentar altura do cabeçalho */
+    }
+
+    header .logo img {
+        max-width: 135px; /* Ajustar largura máxima */
+    }
+
+
+    header .search-bar input {
+        height: 45px;
+    }
+    nav {
+        padding-top: 30px;
+    }
+
+    nav ul li a {
+        font-size: 22px;
+    }
+
+    header .search-bar input::placeholder {
+        font-size: 20px;
+    }
+}
+
+@media (min-width: 1701px) {
+    .normal-products .product {
+        width: calc(17% - 20px); /* Ajustar largura para ocupar mais espaço horizontalmente */
+    }
+    header .header-icons img {
+        width: 60%;
+        height: auto;
+        max-width: 60px; /* Ajustar largura máxima */
+    }
+    
+    header {
+        height: 105px; /* Aumentar altura do cabeçalho */
+    }
+
+    header .logo img {
+        max-width: 150px; /* Ajustar largura máxima */
+    }
+
+    header .search-bar input {
+        height: 50px;
+    }
+
+    nav {
+        padding-top: 35px;
+    }
+
+    nav ul li a {
+        font-size: 24px;
+    }
+    
+    header .search-bar input::placeholder {
+        font-size: 22px;
+    }
+}
+
