@@ -53,7 +53,7 @@
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
-    background-color: #f4f4f4;
+    background-color: #dcd9ff;
     color: #333;
     padding-top: 80px; /* Increased padding to avoid overlap */
 }
@@ -233,15 +233,6 @@ button.menu-toggle {
     clear: both; /* Garantir que a seção de produtos não entre por baixo do banner */
 }
 
-/* Estilos para os títulos das seções de produtos */
-.products h2 {
-    font-size: 2em;
-    font-weight: bold;
-    text-align: center;
-    margin: 20px 0;
-    color: #333;
-}
-
 .main-products .product {
     position: relative; /* Adicionado para posicionar o botão e o texto sobre a imagem */
     background-color: #fff;
@@ -317,6 +308,7 @@ button.menu-toggle {
 
 .main-products .arrow.left {
     left: 0; /* Fixed position within main-products */
+
 }
 
 .main-products .arrow.right {
@@ -326,39 +318,65 @@ button.menu-toggle {
 .normal-products {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: space-evenly;
 }
 
 .normal-products .product {
     background-color: #fff;
     border: 1px solid #808080; /* Thin gray border for normal products */
     border-radius: 8px; /* Rounded corners for products */
-    padding: 10px;
     margin: 10px 5px; /* Reduced margin for mobile */
     width: 22%;
     text-align: center;
+    position: relative; /* Add relative positioning for the discount badge */
 }
 
 .normal-products .product img {
     width: 100%;
     height: 290px; /* Adjusted height for images */
     object-fit: cover; /* Ensure images cover the area */
-    border-radius: 8px; /* Rounded corners for images */
+    border-radius: 8px 8px 0 0; /* Rounded corners for images */
 }
 
 .normal-products .product h3 {
-    font-size: 1.2em;
+    display: flex;
+    font-size: 1em;
     font-weight: bold;
     margin-bottom: 5px;
     color: #333;
+    padding-left: 15px;
 }
 
 .normal-products .product p {
+    display: flex;
     font-size: 1em;
-    color: #e74c3c;
+    color: #404040;
     margin-bottom: 10px;
     font-weight: bold;
+    padding-left: 15px;
 }
+
+.normal-products .product #preco-antigo{
+    font-size: 0.8em;
+    color: #808080;
+    margin-bottom: 10px;
+    font-weight: bold;
+    text-decoration: line-through;
+}
+
+.normal-products .product .discount-badge {
+    position: absolute;
+    top: 350px;
+    right: 10px;
+    background-color: #000000;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 0.8em;
+    font-weight: bold;
+    width: 50px;
+}
+
 
 normal-products .product button {
     padding: 10px 20px;
@@ -394,7 +412,7 @@ normal-products .product button {
 
 .product button {
     padding: 10px 20px;
-    background-color: #808080; /* Gray background for buttons */
+    background-color: #000000; /* Gray background for buttons */
     color: #fff;
     border: none;
     border-radius: 4px;
@@ -456,7 +474,7 @@ footer ul li a {
 
     header .logo img {
         content: url('logo.jpeg'); /* Use another image for the logo on mobile */
-        max-width: 70px; /* Ajustar largura máxima */
+        max-width: 69px; /* Ajustar largura máxima */
         padding-left: 0px;
     }
 
@@ -540,7 +558,43 @@ footer ul li a {
         padding-top: 8px;
         display: none; /* Hide nav on mobile */
     }
+
+    .normal-products .product h3 {
+        display: flex;
+        font-size: 1em;
+        font-weight: bold;
+        color: #333;
+    }
     
+    .normal-products .product p {
+        display: flex;
+        font-size: 0.9em;
+        color: #404040;
+        margin-bottom: 10px;
+        font-weight: bold;
+        padding-left: 15px;
+    }
+    
+    .normal-products .product #preco-antigo{
+        font-size: 0.7em;
+        color: #808080;
+        margin-bottom: 10px;
+        font-weight: bold;
+        text-decoration: line-through;
+    }
+    
+    .normal-products .product .discount-badge {
+        position: absolute;
+        top: 200px;
+        right: 10px;
+        background-color: #000000;
+        color: #fff;
+        padding: 5px 10px;
+        border-radius: 4px;
+        font-size: 0.65em;
+        font-weight: bold;
+        width: 44px;
+    }
     
 }
 
@@ -605,6 +659,19 @@ footer ul li a {
     }
     header .search-bar input::placeholder {
         font-size: 17px;
+    }
+
+    .normal-products .product .discount-badge {
+        position: absolute;
+        top: 200px;
+        right: 10px;
+        background-color: #007006;
+        color: #fff;
+        padding: 5px 10px;
+        border-radius: 4px;
+        font-size: 0.8em;
+        font-weight: bold;
+        width: 50px;
     }
 }
 
