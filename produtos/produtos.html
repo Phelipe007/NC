@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEW CLOTHES</title>
+    <link rel="stylesheet" href="produtos.css">
+</head>
+<body>
+    <!-- Cabeçalho -->
+    <header>
+        <div class="header">
+            <button class="menu-toggle" id="menuToggle">
+                <img src="../icons/menu.png" alt="Menu"> <!-- Substituir ícone do menu por uma imagem -->
+            </button>
+        </div>
+
+        <div class="logo">
+            <img src="../logo/logo-pc.png" alt="Logotipo">
+        </div>
+        <div class="search-bar">
+            <input type="text" placeholder="Buscar produtos...">
+            <img src="../icons/lupa.png" alt="Lupa" class="search-icon"> <!-- Adicionar imagem de lupa -->
+        </div>
+        <div class="header-icons">
+            <a href="#"><img src="../icons/coracao.png" alt="Entrar"></a>
+            <a href="#"><img src="../icons/carrinho.png" alt="Carrinho de Compras"></a>
+        </div>
+    </header>
+
+    <aside class="sidebar" id="sidebar">
+        <ul>
+            <!-- Menu de Navegação para Mobile -->
+            <li><a href="#">Carrinho</a></li>
+            <li><a href="#">Curtidos</a></li>
+            <li><a href="#">Todas as categorias</a></li>
+            <li><a href="#">Casacos</a></li>
+            <li><a href="#">Camisas</a></li>
+            <li><a href="#">Algodão</a></li>
+        </ul>
+    </aside>
+
+    <!-- Menu de Navegação -->
+    <nav class="nav-links">
+        <ul>
+            <li><a href="#">Todas as categorias</a></li>
+            <li><a href="#">Casacos</a></li>
+            <li><a href="#">Camisas</a></li>
+            <li><a href="#">Algodão</a></li>
+        </ul>
+    </nav>
+
+    <!-- Detalhes do Produto -->
+    <section class="product-details">
+        <div class="product-image">
+            <img src="../produtos/nc1.jpeg" alt="Produto">
+        </div>
+        <div class="product-info">
+            <h1>Produto 1</h1>
+            <p>Descrição detalhada do produto.</p>
+            <p>Preço: R$ 100,00</p>
+            <p id="preco-antigo">Preço Antigo: R$ 170,00</p>
+            <div class="discount-badge">-10%</div>
+            <button>Comprar</button>
+        </div>
+    </section>
+
+    <!-- Formulário de Avaliação -->
+    <section class="review-form">
+        <h2>Deixe sua Avaliação</h2>
+        <form>
+            <div class="form-group">
+                <label for="name">Nome:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="rating">Avaliação:</label>
+                <div class="rating">
+                    <input type="radio" id="star-1-6" name="star-radio-6" value="star-1">
+                    <label for="star-1-6">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path pathLength="360" d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z"></path></svg>
+                    </label>
+                    <input type="radio" id="star-2-6" name="star-radio-6" value="star-1">
+                    <label for="star-2-6">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path pathLength="360" d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z"></path></svg>
+                    </label>
+                    <input type="radio" id="star-3-6" name="star-radio-6" value="star-1">
+                    <label for="star-3-6">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path pathLength="360" d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z"></path></svg>
+                    </label>
+                    <input type="radio" id="star-4-6" name="star-radio-6" value="star-1">
+                    <label for="star-4-6">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path pathLength="360" d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z"></path></svg>
+                    </label>
+                    <input type="radio" id="star-5-6" name="star-radio-6" value="star-1">
+                    <label for="star-5-6">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path pathLength="360" d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z"></path></svg>
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="review">Comentário:</label>
+                <textarea id="review" name="review" rows="4" required></textarea>
+            </div>
+            <button type="submit">Enviar Avaliação</button>
+        </form>
+    </section>
+
+    <!-- Rodapé -->
+    <footer>
+        <ul>
+            <li><a href="#">Política de Privacidade</a></li>
+            <li><a href="#">Termos de Uso</a></li>
+            <li><a href="#">Atendimento ao Cliente</a></li>
+            <li><a href="#">Redes Sociais</a></li>
+        </ul>
+    </footer>
+
+    <script src="produtos.js"></script>
+</body>
+</html>
