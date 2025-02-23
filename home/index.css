@@ -400,40 +400,38 @@ button.menu-toggle {
     gap: 0.3rem;
     --stroke: #000000;
     --fill: #ffc73a;
-    position: relative; /* Add relative positioning */
-    right: 126px; /* Adjust this value to move the stars to the left */
-}
+  }
   
-.rating input {
+  .rating input {
     appearance: unset;
-}
+  }
   
-.rating label {
+  .rating label {
     cursor: pointer;
-}
+  }
   
-.rating svg {
-    width: 1.3rem;
-    height: 1.3rem;
+  .rating svg {
+    width: 1.5rem;
+    height: 2rem;
     overflow: visible;
     fill: transparent;
     stroke: var(--stroke);
     stroke-linejoin: bevel;
-    stroke-dasharray: 2;
+    stroke-dasharray: 12;
 
-}
+  }
   
-@keyframes idle {
+  @keyframes idle {
     from {
       stroke-dashoffset: 24;
     }
-}
+  }
   
-.rating label:hover svg {
+  .rating label:hover svg {
     stroke: var(--fill);
-}
+  }
   
-.rating input:checked ~ label svg {
+  .rating input:checked ~ label svg {
     transition: 0s;
     animation: idle 4s linear infinite, yippee 0.75s backwards;
     fill: var(--fill);
@@ -442,9 +440,9 @@ button.menu-toggle {
     stroke-dasharray: 0;
     stroke-linejoin: miter;
     stroke-width: 8px;
-}
+  }
   
-@keyframes yippee {
+  @keyframes yippee {
     0% {
       transform: scale(1);
       fill: var(--fill);
@@ -478,7 +476,7 @@ button.menu-toggle {
       transform: scale(1.2);
       fill: var(--fill);
     }
-}
+  }
   
 
 
@@ -563,7 +561,7 @@ footer ul li a {
     }
 
     header .logo img {
-        content: url('../logo/logo.jpeg'); /* Use another image for the logo on mobile */
+        content: url('logo.jpeg'); /* Use another image for the logo on mobile */
         max-width: 69px; /* Ajustar largura máxima */
         padding-left: 0px;
     }
